@@ -1,178 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="app.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="src/main.css" />
 
-	<title>Tone</title>
+    <title>Tone</title>
+  </head>
 
-</head>
+  <body>
+    <div class="unit">
+      <div class="container">
+        <span id="start-btn" class="brick-front">PRESS TO START</span>
+      </div>
+      <div class="container">
+        <canvas class="canvas"></canvas>
+      </div>
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Amp Envelope</span>
+          <div class="plugin__container">
+            <span class="plugin__label">Level</span>
+            <div
+              class="plugin"
+              data-label="mod-1-label"
+              data-fixed="2"
+              data-value="1.00"
+              data-min-value="0.00"
+              data-max-value="1.00"
+              id="mod-1"
+            ></div>
+            <span class="plugin__value" data-for="mod-1" id="mod-1-label"
+              >1.00</span
+            >
+          </div>
+          <div class="plugin__container">
+            <span class="plugin__label">Attack</span>
+            <div
+              class="plugin"
+              data-label="mod-2-label"
+              data-fixed="2"
+              data-value="0.00"
+              data-min-value="0.00"
+              data-max-value="10.00"
+              id="mod-2"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-2"
+              data-units="s"
+              id="mod-2-label"
+              >0.00s</span
+            >
+          </div>
+          <div class="plugin__container">
+            <span class="plugin__label">Release</span>
+            <div
+              class="plugin"
+              data-label="mod-3-label"
+              data-fixed="2"
+              data-value="1.50"
+              data-min-value="0.00"
+              data-max-value="10.00"
+              id="mod-3"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-3"
+              data-units="s"
+              id="mod-3-label"
+              >1.50s</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="mod min-0">
+          <span class="mod__label">Trigger</span>
+          <h1 class="brick">
+            <span id="kick-button" class="brick-front"></span>
+          </h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Pitch Envelope</span>
+          <div class="plugin__container">
+            <span class="plugin__label">Pitch</span>
+            <div
+              class="plugin"
+              data-label="mod-4-label"
+              data-fixed="0"
+              data-value="150"
+              data-min-value="10"
+              data-max-value="5000"
+              id="mod-4"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-4"
+              data-units="Hz"
+              id="mod-4-label"
+              >150Hz</span
+            >
+          </div>
+          <div class="plugin__container">
+            <span class="plugin__label">Attack</span>
+            <div
+              class="plugin"
+              data-label="mod-5-label"
+              data-fixed="2"
+              data-value="0.00"
+              data-min-value="0.00"
+              data-max-value="10.00"
+              id="mod-5"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-5"
+              data-units="s"
+              id="mod-5-label"
+              >0.00s</span
+            >
+          </div>
+          <div class="plugin__container">
+            <span class="plugin__label">Release</span>
+            <div
+              class="plugin"
+              data-label="mod-6-label"
+              data-fixed="2"
+              data-value="1.50"
+              data-min-value="0.00"
+              data-max-value="10.00"
+              id="mod-6"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-6"
+              data-units="s"
+              id="mod-6-label"
+              >1.50s</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Filter</span>
+          <div class="plugin__container">
+            <span class="plugin__label">Gain</span>
+            <div
+              class="plugin"
+              data-label="mod-7-label"
+              data-fixed="1"
+              data-value="0.0"
+              data-min-value="-40"
+              data-max-value="40"
+              id="mod-7"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-7"
+              data-units="dB"
+              id="mod-7-label"
+              >0.0dB</span
+            >
+          </div>
+          <div class="plugin__container">
+            <span class="plugin__label">Cutoff</span>
+            <div
+              class="plugin"
+              data-label="mod-8-label"
+              data-fixed="0"
+              data-value="350"
+              data-min-value="10"
+              data-max-value="5000"
+              id="mod-8"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-8"
+              data-units="Hz"
+              id="mod-8-label"
+              >350Hz</span
+            >
+          </div>
+          <div class="plugin__container">
+            <span class="plugin__label">Resonance</span>
+            <div
+              class="plugin"
+              data-label="mod-9-label"
+              data-fixed="3"
+              data-value="1.000"
+              data-min-value="0.001"
+              data-max-value="100.000"
+              id="mod-9"
+            ></div>
+            <span class="plugin__value" data-for="mod-9" id="mod-9-label"
+              >1.000</span
+            >
+          </div>
+        </div>
+      </div>
 
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Compressor</span>
 
-<body>
-	<div class="unit">
-		<div class='container'>
-			<canvas class='canvas'></canvas>
-		</div>
-		<div class='container'>
-				<div class='mod'>
-						<span class='mod__label'>Amp Envelope</span>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Level</span>
-								<div class='plugin' data-label='mod-1-label' data-fixed="2" data-value='1.00' data-min-value="0.00" data-max-value="1.00" id='mod-1'></div>
-								<span class='plugin__value' data-for='mod-1' id='mod-1-label'>1.00</span>
-						</div>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Attack</span>
-								<div class='plugin' data-label='mod-2-label' data-fixed="2" data-value='0.00' data-min-value="0.00" data-max-value="10.00" id='mod-2'></div>
-								<span class='plugin__value' data-for='mod-2' data-units="s" id='mod-2-label'>0.00s</span>
-						</div>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Release</span>
-								<div class='plugin' data-label='mod-3-label' data-fixed="2" data-value='1.50' data-min-value="0.00" data-max-value="10.00" id='mod-3'></div>
-								<span class='plugin__value' data-for='mod-3' data-units="s" id='mod-3-label'>1.50s</span>
-						</div>
-				</div>
-		</div>
-		<div class='container'>
-				<div class='mod min-0'>
-						<span class='mod__label'>Trigger</span>
-						<h1 class='brick'>
-								<span id="kick-button" class='brick-front'></span>
-						</h1>
-				</div>
-		</div>
-		<div class='container'>
-				<div class='mod'>
-						<span class='mod__label'>Pitch Envelope</span>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Pitch</span>
-								<div class='plugin' data-label='mod-4-label' data-fixed="0"data-value='150' data-min-value="10" data-max-value="5000" id='mod-4'></div>
-								<span class='plugin__value' data-for='mod-4' data-units="Hz" id='mod-4-label'>150Hz</span>
-						</div>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Attack</span>
-								<div class='plugin' data-label='mod-5-label' data-fixed="2" data-value='0.00' data-min-value="0.00" data-max-value="10.00" id='mod-5'></div>
-								<span class='plugin__value' data-for='mod-5' data-units="s" id='mod-5-label'>0.00s</span>
-						</div>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Release</span>
-								<div class='plugin' data-label='mod-6-label' data-fixed="2" data-value='1.50' data-min-value="0.00" data-max-value="10.00" id='mod-6'></div>
-								<span class='plugin__value' data-for='mod-6' data-units="s" id='mod-6-label'>1.50s</span>
-						</div>
-				</div>
-		</div>
-		<div class='container'>
-				<div class='mod'>
-						<span class='mod__label'>Filter</span>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Gain</span>
-								<div class='plugin' data-label='mod-7-label' data-fixed="1" data-value='0.0' data-min-value="-40" data-max-value="40" id='mod-7'></div>
-								<span class='plugin__value' data-for='mod-7' data-units="dB" id='mod-7-label'>0.0dB</span>
-						</div>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Cutoff</span>
-								<div class='plugin' data-label='mod-8-label' data-fixed="0" data-value='350' data-min-value="10" data-max-value="5000" id='mod-8'></div>
-								<span class='plugin__value' data-for='mod-8' data-units="Hz" id='mod-8-label'>350Hz</span>
-						</div>
-						<div class='plugin__container'>
-								<span class='plugin__label'>Resonance</span>
-								<div class='plugin' data-label='mod-9-label' data-fixed="3" data-value='1.000' data-min-value="0.001" data-max-value="100.000" id='mod-9'></div>
-								<span class='plugin__value' data-for='mod-9' id='mod-9-label'>1.000</span>
-						</div>
-				</div>
-		</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Threshold</span>
+            <div
+              class="plugin"
+              data-label="mod-10-label"
+              data-fixed="1"
+              data-value="-24.0"
+              data-min-value="-100"
+              data-max-value="0"
+              id="mod-10"
+            ></div>
+            <span class="plugin__value" data-for="mod-10" id="mod-10-label"
+              >-24.0</span
+            >
+          </div>
 
-		<div class='container'>
-				<div class='mod'>
-						<span class='mod__label'>Compressor</span>
+          <div class="plugin__container">
+            <span class="plugin__label">Knee</span>
+            <div
+              class="plugin"
+              data-label="mod-11-label"
+              data-fixed="1"
+              data-value="30.0"
+              data-min-value="0"
+              data-max-value="40"
+              id="mod-11"
+            ></div>
+            <span class="plugin__value" data-for="mod-11" id="mod-11-label"
+              >30.0</span
+            >
+          </div>
 
-						<div class='plugin__container'>
-								<span class='plugin__label'>Threshold</span>
-								<div class='plugin' data-label='mod-10-label' data-fixed="1" data-value='-24.0' data-min-value="-100" data-max-value="0" id='mod-10'></div>
-								<span class='plugin__value' data-for='mod-10' id='mod-10-label'>-24.0</span>
-						</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Ratio</span>
+            <div
+              class="plugin"
+              data-label="mod-12-label"
+              data-fixed="1"
+              data-value="12.0"
+              data-min-value="1"
+              data-max-value="20"
+              id="mod-12"
+            ></div>
+            <span class="plugin__value" data-for="mod-12" id="mod-12-label"
+              >12.0</span
+            >
+          </div>
 
-						<div class='plugin__container'>
-								<span class='plugin__label'>Knee</span>
-								<div class='plugin' data-label='mod-11-label' data-fixed="1" data-value='30.0' data-min-value="0" data-max-value="40" id='mod-11'></div>
-								<span class='plugin__value' data-for='mod-11' id='mod-11-label'>30.0</span>
-						</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Attack</span>
+            <div
+              class="plugin"
+              data-label="mod-14-label"
+              data-fixed="3"
+              data-value="0.003"
+              data-min-value="0"
+              data-max-value="1"
+              id="mod-14"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-14"
+              data-units="s"
+              id="mod-14-label"
+              >0.003s</span
+            >
+          </div>
 
-						<div class='plugin__container'>
-								<span class='plugin__label'>Ratio</span>
-								<div class='plugin' data-label='mod-12-label' data-fixed="1" data-value='12.0' data-min-value="1" data-max-value="20" id='mod-12'></div>
-								<span class='plugin__value' data-for='mod-12' id='mod-12-label'>12.0</span>
-						</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Release</span>
+            <div
+              class="plugin"
+              data-label="mod-15-label"
+              data-fixed="2"
+              data-value="0.25"
+              data-min-value="0"
+              data-max-value="1"
+              id="mod-15"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-15"
+              data-units="s"
+              id="mod-15-label"
+              >0.25s</span
+            >
+          </div>
+        </div>
+      </div>
 
-						<div class='plugin__container'>
-								<span class='plugin__label'>Attack</span>
-								<div class='plugin' data-label='mod-14-label' data-fixed="3" data-value='0.003' data-min-value="0" data-max-value="1" id='mod-14'></div>
-								<span class='plugin__value' data-for='mod-14' data-units="s" id='mod-14-label'>0.003s</span>
-						</div>
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Delay</span>
 
-						<div class='plugin__container'>
-								<span class='plugin__label'>Release</span>
-								<div class='plugin' data-label='mod-15-label' data-fixed="2" data-value='0.25' data-min-value="0" data-max-value="1" id='mod-15'></div>
-								<span class='plugin__value' data-for='mod-15' data-units="s" id='mod-15-label'>0.25s</span>
-						</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Feedback</span>
+            <div
+              class="plugin"
+              data-label="mod-16-label"
+              data-fixed="2"
+              data-value="0"
+              data-min-value="0"
+              data-max-value="1"
+              id="mod-16"
+            ></div>
+            <span class="plugin__value" data-for="mod-16" id="mod-16-label"
+              >0.00</span
+            >
+          </div>
 
-				</div>
-		</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Time</span>
+            <div
+              class="plugin"
+              data-label="mod-17-label"
+              data-fixed="2"
+              data-value="0"
+              data-min-value="0"
+              data-max-value="6"
+              id="mod-17"
+            ></div>
+            <span
+              class="plugin__value"
+              data-for="mod-17"
+              data-units="s"
+              id="mod-17-label"
+              >0.00s</span
+            >
+          </div>
+        </div>
+      </div>
 
-		<div class='container'>
-				<div class='mod'>
-						<span class='mod__label'>Delay</span>
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Distortion</span>
 
-						<div class='plugin__container'>
-							<span class='plugin__label'>Feedback</span>
-							<div class='plugin' data-label='mod-16-label' data-fixed="2" data-value='0' data-min-value="0" data-max-value="1" id='mod-16'></div>
-							<span class='plugin__value' data-for='mod-16' id='mod-16-label'>0.00</span>
-						</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Gain</span>
+            <div
+              class="plugin"
+              data-label="mod-18-label"
+              data-fixed="2"
+              data-value="0"
+              data-min-value="0"
+              data-max-value="1"
+              id="mod-18"
+            ></div>
+            <span class="plugin__value" data-for="mod-18" id="mod-18-label"
+              >0.00</span
+            >
+          </div>
 
-						<div class='plugin__container'>
-								<span class='plugin__label'>Time</span>
-								<div class='plugin' data-label='mod-17-label' data-fixed="2" data-value='0' data-min-value="0" data-max-value="6" id='mod-17'></div>
-								<span class='plugin__value' data-for='mod-17' data-units="s" id='mod-17-label'>0.00s</span>
-						</div>
+          <div class="plugin__container">
+            <span class="plugin__label">Damage</span>
+            <div
+              class="plugin"
+              data-label="mod-19-label"
+              data-fixed="2"
+              data-value="0"
+              data-min-value="0"
+              data-max-value="50"
+              id="mod-19"
+            ></div>
+            <span class="plugin__value" data-for="mod-19" id="mod-19-label"
+              >0.00</span
+            >
+          </div>
+        </div>
+      </div>
 
-				</div>
-		</div>
+      <div class="container">
+        <div class="mod">
+          <span class="mod__label">Preset</span>
+          <button class="load-preset">Load</button>
+        </div>
+      </div>
+    </div>
 
-		<div class='container'>
-				<div class='mod'>
-						<span class='mod__label'>Distortion</span>
-
-						<div class='plugin__container'>
-							<span class='plugin__label'>Gain</span>
-							<div class='plugin' data-label='mod-18-label' data-fixed="2" data-value='0' data-min-value="0" data-max-value="1" id='mod-18'></div>
-							<span class='plugin__value' data-for='mod-18' id='mod-18-label'>0.00</span>
-						</div>
-
-						<div class='plugin__container'>
-								<span class='plugin__label'>Damage</span>
-								<div class='plugin' data-label='mod-19-label' data-fixed="2" data-value='0' data-min-value="0" data-max-value="50" id='mod-19'></div>
-								<span class='plugin__value' data-for='mod-19' id='mod-19-label'>0.00</span>
-						</div>
-
-				</div>
-		</div>
-
-		<div class="container">
-			<div class="mod">
-				<span class='mod__label'>Preset</span>
-				<button class='load-preset'>Load</button>
-			</div>
-
-		</div>
-
-
-	</div>
-
-	<script src="dist/vendors.js"></script>
-	<script src="dist/app.js"></script>
-
-</body>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
